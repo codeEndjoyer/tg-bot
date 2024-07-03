@@ -11,7 +11,7 @@ const startGame = async (chatId) => {
     await bot.sendMessage(chatId, `Я загадаю от 0 до 9, а ты угадай:)`)
     const randomNumber = Math.floor(Math.random() * 10)
     chats[chatId] = randomNumber;
-    await bot.sendMessage(chatId, `Отгадай`, gameOptionst)
+    await bot.sendMessage(chatId, `Отгадай`, gameOptions )
 }
 
 const start = () => {
@@ -44,12 +44,11 @@ const start = () => {
         if(data === '/again') {
             return startGame(chatId);
         }
-        if(data === chats[chatId]) {
-            return await bot.sendMessage(chatId, `Ты отгадал ${chats[chatId]}`, againOptionst)
+        if(data == chats[chatId]) {
+            return bot.sendMessage(chatId, `Ты отгадал ${chats[chatId]}`, againOptions)
         } else {
-            return bot.sendMessage(chatId, `Ты не угадал :( Бот загадывал ${chats[chatId]}`, againOptionst)
+            return bot.sendMessage(chatId, `Ты не угадал :((п Бот загадывал ${chats[chatId]}`, againOptions)
         }
-        bot.sendMessage(chatId, `Твоя цифра ${data}`)
     })
 
 }
